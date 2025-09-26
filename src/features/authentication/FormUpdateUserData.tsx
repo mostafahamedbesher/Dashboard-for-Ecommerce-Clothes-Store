@@ -24,6 +24,9 @@ function FormUpdateUserData() {
   const { mutate: updateUserData, isPending: isUpdatingUser } = useUpdateUser();
 
   function handleFormSubmit(submitData: updateUserDataFormType) {
+    // disable any mutations except for admin
+    if (user?.email !== "mostafahamed241@gmail.com") return;
+
     // protect email change
     if (submitData.email !== user?.user_metadata.email) return;
 

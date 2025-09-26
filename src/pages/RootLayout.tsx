@@ -3,10 +3,13 @@ import Sidebar from "../ui/Sidebar";
 import Header from "../ui/Header";
 import { MobileMenuProvider } from "../contexts/MobileMenuContext";
 import MobileMenu from "../ui/MobileMenu";
+import InfoWebsite from "../ui/InfoWebsite";
 
 function RootLayout() {
   return (
     <MobileMenuProvider>
+      <InfoWebsite />
+
       <div className="grid grid-cols-[310px_auto] max-xl:grid-cols-1">
         {/* desktop */}
         <div className="max-xl:hidden">

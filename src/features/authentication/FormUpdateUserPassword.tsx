@@ -22,6 +22,9 @@ function FormUpdateUserPassword() {
   const [isVerifying, setIsVerifying] = useState(false);
 
   async function handleFormSubmit(submitData: updateUserPasswordFormType) {
+    // disable any mutations except for admin
+    if (user?.email !== "mostafahamed241@gmail.com") return;
+
     if (!submitData.password || !user?.email) return;
 
     // Verify old password before updating

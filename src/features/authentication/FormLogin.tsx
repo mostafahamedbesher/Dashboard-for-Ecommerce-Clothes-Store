@@ -9,8 +9,8 @@ import SpinnerMini from "../../ui/SpinnerMini";
 function FormLogin() {
   const formMethods = useForm<LoginType>({
     defaultValues: {
-      email: "mostafahamed241@gmail.com",
-      password: "Mbpass123",
+      email: "",
+      password: "",
     },
   });
 

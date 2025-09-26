@@ -30,4 +30,9 @@ The dashboard connects to **Supabase** as a backend for database management and 
 - **Analytics Dashboard**: Interactive charts for sales, revenue, and order trends.  
 - **Form Handling & Validation**: Type-safe and robust forms using React Hook Form.  
 - **Real-time Data**: Seamless data synchronization with Supabase using React Query.  
-- **Responsive UI**: Fully responsive design for desktop, tablet, and mobile.  
+- **Responsive UI**: Fully responsive design for desktop, tablet, and mobile.
+
+---
+
+## Demo
+  https://dashboard-for-ecommerce-clothes-sto.vercel.app/

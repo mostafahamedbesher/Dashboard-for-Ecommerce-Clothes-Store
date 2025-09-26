@@ -1,27 +1,33 @@
-# React + TypeScript + Vite
+# 🛍️ Ecommerce Clothes Store Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A comprehensive **admin dashboard** for managing an ecommerce clothes store. Built with **React.js, TypeScript, and Supabase**,
+it provides powerful tools for managing products, orders, and users, along with real-time analytics and a responsive UI.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 📖 Description
+This project is an **Ecommerce Clothes Store Dashboard** that allows administrators to manage store operations efficiently. 
+It includes full product and order management, analytics with interactive charts, and a modern responsive interface.  
+The dashboard connects to **Supabase** as a backend for database management and authentication, ensuring secure and scalable operations.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## ⚙️ Technologies Used
+- **React.js** – UI development  
+- **TypeScript** – Type-safe codebase  
+- **React Query** – Data fetching & caching  
+- **React Hook Form** – Form handling & validation  
+- **Tailwind CSS** – Styling & responsive design  
+- **Recharts** – Data visualization  
+- **Supabase** – Backend, database, and authentication  
 
-- Configure the top-level `parserOptions` property like this:
+---
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## ✨ Features
+- **Product Management**: Create, update, delete products with support for size, color, stock, and pricing.  
+- **Order Management**: View, update, and cancel orders with detailed status tracking.  
+- **User Management**: Manage customer data securely.  
+- **Analytics Dashboard**: Interactive charts for sales, revenue, and order trends.  
+- **Form Handling & Validation**: Type-safe and robust forms using React Hook Form.  
+- **Real-time Data**: Seamless data synchronization with Supabase using React Query.  
+- **Responsive UI**: Fully responsive design for desktop, tablet, and mobile.  

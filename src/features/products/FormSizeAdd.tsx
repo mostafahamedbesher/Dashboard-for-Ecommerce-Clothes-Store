@@ -5,6 +5,7 @@ import ErrorForm from "../../ui/ErrorForm";
 import Input from "../../ui/Input";
 import SelectInput from "../../ui/SelectInput";
 import { AddSizeFormValues } from "../../types/ProductsTypes";
+import { sizesSchema } from "../../utils/constants";
 
 interface FormSizeAddProps {
   productId: number;
@@ -13,13 +14,17 @@ interface FormSizeAddProps {
   selectedColor: string;
 }
 
-const sizesOptions = [
-  { label: "sm", value: "sm" },
-  { label: "m", value: "m" },
-  { label: "l", value: "l" },
-  { label: "xl", value: "xl" },
-  { label: "2xl", value: "2xl" },
-];
+// const sizesOptions = [
+//   { label: "sm", value: "sm" },
+//   { label: "m", value: "m" },
+//   { label: "l", value: "l" },
+//   { label: "xl", value: "xl" },
+//   { label: "2xl", value: "2xl" },
+// ];
+
+const sizesOptions = sizesSchema.map((size) => {
+  return { label: size, value: size };
+});
 
 function FormSizeAdd({
   productId,

@@ -151,12 +151,12 @@ function FormOrderInfoEdit({ order }: FormOrderInfoEditProps) {
             validation={{
               required: "Customer Address is required",
               minLength: {
-                value: 5,
-                message: "Customer Address must be at least 5 characters",
+                value: 3,
+                message: "Customer Address must be at least 3 characters",
               },
               maxLength: {
-                value: 500,
-                message: "Customer Address must be less than 500 characters",
+                value: 200,
+                message: "Customer Address must be less than 200 characters",
               },
             }}
           />

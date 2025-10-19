@@ -64,3 +64,8 @@ export function sortByReferenceArray<T>(unSortedArr: T[], refArr: T[]) {
 
   return sortedArr;
 }
+
+export function toLocalDate(date: Date): Date {
+  // Convert UTC → Local time
+  return new Date(date.getTime() + date.getTimezoneOffset() * 60000);
+}

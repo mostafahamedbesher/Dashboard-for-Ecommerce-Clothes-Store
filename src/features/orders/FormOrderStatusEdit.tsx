@@ -45,6 +45,11 @@ function FormOrderStatusEdit({
   function handleFormSubmit(data: OrderStatusFormValues) {
     const isPaid = data.paymentStatus === "paid" ? true : false;
     updateStatus({ orderId, orderStatus: data.status, isPaid });
+
+    // when canceling order --> i should add ordered items variants quantities back
+    // if(data.status === "canceled"){
+
+    // }
   }
 
   return (

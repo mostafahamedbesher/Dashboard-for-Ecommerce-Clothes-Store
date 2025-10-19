@@ -20,9 +20,8 @@ function TopSellingList() {
   const { data: images, isPending: isLoadingImages } = useGetAllImages();
   const { data: variants, isPending: isLoadingVariants } = useGetAllVariants();
 
-  /// solution to buildtopSelling array///
+  /// solution to build TopSelling array///
   ///// solution 1 (my solution) --> bad complexity --> O(n^2)/////
-
   // // build topSelling array
   // const topSellingItems: TopSellingType[] = [];
   // orderItems?.forEach((item) => {
@@ -54,35 +53,41 @@ function TopSellingList() {
   // });
 
   ///// solution 2 (chatgpt solution) --> better complexity --> O(n) /////
-
   // Build a map of variantId → productId
   const variantToProductIdMap = new Map<number, number>();
   variants?.forEach((variant) => {
     variantToProductIdMap.set(variant.id, variant.productId);
   });
 
-  // Build a map of productId → firstImage
-  const productIdToImageMap = new Map<number, string>();
+  // Build a map of{ productId,color} → firstImage
+  const productIdToImageMap = new Map<string, string>();
   images?.forEach((imgItem) => {
     if (imgItem.images?.length) {
-      productIdToImageMap.set(imgItem.productId, imgItem.images[0]);
+      productIdToImageMap.set(
+        JSON.stringify({ productId: imgItem.productId, color: imgItem.color }),
+        imgItem.images[0]
+      );
     }
   });
 
-  // Build top-selling items with a map for O(1) access
-  const topSellingMap = new Map<number, TopSellingType>();
+  const topSellingMap = new Map<string, TopSellingType>();
 
   orderItems?.forEach((item) => {
-    const productId = variantToProductIdMap.get(item.productId);
-    const image = productIdToImageMap.get(productId!) || "";
+    const productId = variantToProductIdMap.get(item.productId)!;
+    const image =
+      productIdToImageMap.get(
+        JSON.stringify({ productId, color: item.color })
+      ) || "";
 
-    const existing = topSellingMap.get(item.productId);
+    const existing = topSellingMap.get(
+      JSON.stringify({ productId, color: item.color })
+    );
 
     if (existing) {
       existing.count += item.quantity;
       existing.revenue += item.price;
     } else {
-      topSellingMap.set(item.productId, {
+      topSellingMap.set(JSON.stringify({ productId, color: item.color }), {
         productId: item.productId,
         item,
         count: item.quantity,
@@ -103,7 +108,7 @@ function TopSellingList() {
   }
 
   return (
-    <ul className="space-y-4 h-[350px]">
+    <ul className="space-y-4 max-xs:space-y-3 h-[350px]">
       {sortedTopSellingItems.slice(0, 5).map((item) => (
         <TopSellingItem
           key={item.item.id}

@@ -14,6 +14,7 @@ import FormColorAdd from "./FormColorAdd";
 import RadioColorsGroup from "./RadioColorsGroup";
 import ErrorMessage from "../../ui/ErrorMessage";
 import { VariantsProductFormValues } from "../../types/ProductsTypes";
+import { useState } from "react";
 
 interface FormEditProps {
   productData: {
@@ -51,7 +52,7 @@ function FormVariantsEdit({ productData, colors }: FormEditProps) {
   const formMethods = useForm<VariantsProductFormValues>({
     defaultValues: { colors: colors[0], sizesQuantity: {} },
   });
-  const { handleSubmit, watch, setValue } = formMethods;
+  const { handleSubmit, watch, setValue, resetField } = formMethods;
 
   function resetFormDefaultColor(color: string) {
     setValue("colors", color);
@@ -68,7 +69,8 @@ function FormVariantsEdit({ productData, colors }: FormEditProps) {
   // handle images update(id here is the main product id we use here to reinvaliadte cache after uploading new images)
   const { mutate, isPending: isUpdatingImages } = useUpdateImages(
     id,
-    updateVarinatsImages
+    updateVarinatsImages,
+    () => resetField("images")
   );
 
   // get Existing images of the selected color
@@ -81,13 +83,24 @@ function FormVariantsEdit({ productData, colors }: FormEditProps) {
   const selectedColorimagesId = item?.id;
   const selectedColorimages = item?.images || [];
 
+  // this state used to reset inputImage Component states (previewImages,filesCount)
+  const [resetTrigger, setResetTrigger] = useState(0);
+
   function handleImagesSubmit(data: VariantsProductFormValues) {
-    // update Color Images
-    mutate({
-      id: selectedColorimagesId,
-      newimages: data.images,
-      oldImages: selectedColorimages,
-    });
+    // update Images for each selected color
+    mutate(
+      {
+        id: selectedColorimagesId,
+        newimages: data.images,
+        oldImages: selectedColorimages,
+      },
+      {
+        onSuccess: () => {
+          // use to reset imagesPrivew & filesCount states in InputImage Component
+          setResetTrigger((prev) => prev + 1);
+        },
+      }
+    );
   }
 
   if (isPending || isLoadingImages) {
@@ -132,6 +145,7 @@ function FormVariantsEdit({ productData, colors }: FormEditProps) {
               productId={id}
               isUpdatingImages={isUpdatingImages}
               colors={colors}
+              resetTrigger={resetTrigger}
             />
           ) : null}
         </BoxForm>

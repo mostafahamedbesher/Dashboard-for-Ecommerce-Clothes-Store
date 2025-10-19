@@ -25,14 +25,17 @@ function OrderedProductItem({
   orderPrice,
   orderId,
 }: OrderedProductItemProps) {
-  // get ordered product variant image
+  ///// get ordered product variant image /////
   const { data: orderItemVariant, isPending: isLoadingOrderVariant } =
     useGetOrderItemsVariant(orderItem?.productId);
 
   const { data: productImages, isPending: isLoadingImages } =
     useGetProductImages(orderItemVariant?.productId);
 
-  const image = productImages?.at(0).images?.at(0);
+  const image = productImages
+    ?.filter((imgData) => imgData.color === orderItem.color)
+    ?.at(0)
+    .images?.at(0);
 
   if (isLoadingOrderVariant || isLoadingImages || !orderItem || !productImages)
     return <SpinnerMini spinnerColor="border-primary_2" />;

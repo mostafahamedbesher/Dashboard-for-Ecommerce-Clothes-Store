@@ -4,7 +4,8 @@ import toast from "react-hot-toast";
 
 export function useUpdateImages<TVariables>(
   id: number,
-  callbackFn: (variables: TVariables) => Promise<unknown>
+  callbackFn: (variables: TVariables) => Promise<unknown>,
+  resetInputFn?: () => void
 ) {
   const queryClient = useQueryClient();
 
@@ -17,6 +18,8 @@ export function useUpdateImages<TVariables>(
       });
       // show notification
       toast.success("Images Updated Successfully");
+
+      resetInputFn?.();
     },
     onError: () => {
       toast.error("Images Couldnot be Updated!");

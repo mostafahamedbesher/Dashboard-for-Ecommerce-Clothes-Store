@@ -78,7 +78,12 @@ function Dashboard() {
             </ChartBox>
 
             <InfoBox headingText="Top Selling Products">
-              <TopSellingList />
+              <div className="flex flex-col gap-2">
+                <TopSellingList />
+                {/* <button className="text-secondary text-sm border-b border-secondary w-fit self-end hover:text-secondary_2 transition-colors duration-200">
+                  Show All
+                </button> */}
+              </div>
             </InfoBox>
           </div>
         </FilterChartOrdersProvider>

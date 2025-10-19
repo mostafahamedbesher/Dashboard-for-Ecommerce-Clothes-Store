@@ -7,6 +7,7 @@ import Button from "../../ui/Button";
 import SelectInput from "../../ui/SelectInput";
 import { useSignup } from "./useSignup";
 import SpinnerMini from "../../ui/SpinnerMini";
+import { useGetCurrentUser } from "./useGetCurrentUser";
 
 const roleOptions = [
   { label: "Staff", value: "staff" },
@@ -20,10 +21,18 @@ function FormSignup() {
 
   const { mutate: signupUser, isPending: isSigningUp } = useSignup();
 
+  // get current user to check if he is an admin so he can sign up new users
+  const { data: currentUser } = useGetCurrentUser();
+
   function handleFormSubmit(submitData: userSignUpFormType) {
     const { fullName, email, password, role } = submitData;
+
     // admins only can register new staff users
-    if (role === "admin") {
+    if (
+      currentUser &&
+      currentUser.role === "authenticated" &&
+      currentUser.user_metadata.role === "admin"
+    ) {
       signupUser({ fullName, email, password, role });
     }
   }

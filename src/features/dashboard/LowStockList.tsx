@@ -23,7 +23,7 @@ function LowStockList() {
     return <Spinner spinnerColor="border border-primary_2" />;
 
   return (
-    <ul className="space-y-4 h-[350px] overflow-y-scroll custom-scrollbar">
+    <ul className="space-y-4 max-xs:space-y-3 h-[350px] overflow-y-scroll custom-scrollbar">
       {filteredVariants?.map((variant) => {
         const mainProduct: productType[] = products?.data.filter(
           (product) => product.id === variant.productId

@@ -272,7 +272,7 @@ function FormProductEdit({ productData, isEditSession }: FormEditProps) {
 
           <div className="grid grid-cols-[max-content_1fr] items-center gap-4 max-sm:grid-cols-1 max-sm:gap-1">
             <p className="whitespace-nowrap text-primary_2 w-28">Main Image</p>
-            <div className="flex justify-center items-center border border-dashed border-primary_2 w-full h-40">
+            <div className="flex justify-center items-center border border-dashed border-primary_2 w-full h-40 p-2 max-sm:h-52">
               <InputImage
                 name="images"
                 label="Select Image"

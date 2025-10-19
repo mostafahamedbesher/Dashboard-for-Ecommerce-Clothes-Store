@@ -9,10 +9,9 @@ interface TopSellingItemProps {
 
 function TopSellingItem({ item, count, revenue, image }: TopSellingItemProps) {
   return (
-    <li className="grid grid-cols-[1fr_4fr] gap-2 max-lg:grid-cols-[1fr_6fr]">
+    <li className="grid grid-cols-[1fr_4fr] gap-2 max-lg:grid-cols-[1fr_9fr] max-md:grid-cols-[1fr_7fr] max-sm:grid-cols-[1fr_5fr] max-xs:grid-cols-[1fr_4fr]">
       <div>
         <img
-          // src="https://lphbzyzalwcxbdijqkhc.supabase.co/storage/v1/object/public/products-images/image-2.jpg"
           src={image}
           alt="product image"
           className="w-16 h-16 max-lg:w-14 max-lg:h-14 rounded-sm"
@@ -29,6 +28,11 @@ function TopSellingItem({ item, count, revenue, image }: TopSellingItemProps) {
           <span className="text-lg font-semibold">.</span>
           <span>${revenue.toFixed(2)} revenue</span>
         </div>
+
+        {/* <div
+          className={`w-4 h-4 rounded-full border border-primary_2`}
+          style={{ backgroundColor: item.color }}
+        ></div> */}
       </div>
     </li>
   );

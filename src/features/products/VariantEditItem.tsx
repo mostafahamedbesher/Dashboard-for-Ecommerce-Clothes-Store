@@ -34,6 +34,7 @@ interface VariantEditItemProps {
   productId: number;
   isUpdatingImages: boolean;
   colors: string[];
+  resetTrigger?: number; // only need this to be passed as prop to InputImageComponent
 }
 
 function VariantEditItem({
@@ -42,6 +43,7 @@ function VariantEditItem({
   productId,
   isUpdatingImages,
   colors,
+  resetTrigger,
 }: VariantEditItemProps) {
   // we use it to check if the added size is already exists
   const AvailableSizesLength =
@@ -166,6 +168,7 @@ function VariantEditItem({
             label="Select Images"
             requiredMessage="You must upload at least one image"
             isUpdatingImages={isUpdatingImages}
+            resetTrigger={resetTrigger}
           />
         </div>
 

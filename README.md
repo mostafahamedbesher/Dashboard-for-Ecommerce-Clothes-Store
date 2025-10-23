@@ -36,3 +36,9 @@ The dashboard connects to **Supabase** as a backend for database management and 
 
 ## Demo
   https://dashboard-for-ecommerce-clothes-sto.vercel.app/
+
+---
+
+## Watch Video
+  [🎥 Watch Demo Video](https://vimeo.com/1129746249?fl=pl&fe=sh)
+

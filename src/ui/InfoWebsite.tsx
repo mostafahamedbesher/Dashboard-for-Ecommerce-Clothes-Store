@@ -5,7 +5,7 @@ function InfoWebsite() {
         ⚠️ All mutations are deactivated to prevent data corruption.
       </span>
       <a
-        href="https://github.com/mostafahamedbesher/Dashboard-for-Ecommerce-Clothes-Store"
+        href="https://vimeo.com/1129746249?fl=pl&fe=sh"
         target="_blank"
         rel="noopener noreferrer"
         className="underline text-blue-600 hover:text-blue-800"

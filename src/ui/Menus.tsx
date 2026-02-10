@@ -95,7 +95,7 @@ function MenuList({ children, id }: MenuListProps) {
   // handle Menu Outside Click to close using this custom hook
   const refList = useOutsideClickClose<HTMLUListElement>(
     () => context?.closeMenuList(),
-    false
+    false,
   );
 
   if (context?.openId !== id) return null;
@@ -144,7 +144,7 @@ function MenuButton({ type, children, to = "", onClick }: MenuButtonProps) {
   }
 }
 
-// add child components as Properties of the parent component
+// add child components as Properties of this parent component
 Menus.ToggleButton = ToggleButton;
 Menus.MenuList = MenuList;
 Menus.MenuButton = MenuButton;
